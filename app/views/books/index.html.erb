@@ -1,0 +1,9 @@
+<h1>Booksindex</h1>
+<% @books.each do |book| %>
+<div>
+  <h2>Books</h2>
+  <p>Title <%= book.title %></p>
+  <p>Opinion <%= book.body %></p>
+  <%= book.user.name %>
+</div>
+<% end %>
