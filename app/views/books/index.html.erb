@@ -1,9 +1,35 @@
-<h1>Booksindex</h1>
-<% @books.each do |book| %>
-<div>
-  <h2>Books</h2>
-  <p>Title <%= book.title %></p>
-  <p>Opinion <%= book.body %></p>
-  <%= book.user.name %>
+<h1>Books index</h1>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h2>User info</h2>
+
+      <%= render 'books/new', book:Book.new %>
+    </div>
+
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+      <% @books.each do |book| %>
+        <tbody>
+          <tr>
+            <tb></tb>
+            <tb><%= book.title %></tb>
+            <tb><%= book.body %></tb>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+    </div>
+  </div>
 </div>
-<% end %>
