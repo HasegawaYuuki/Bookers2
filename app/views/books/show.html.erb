@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
 
     <div class="col-md-3">
@@ -27,7 +27,7 @@
             </td>
             <td><%= book.body %></td>
             <td><%= link_to "Edit", edit_book_path(book.id), class:"btn btn-success md-3" %></td>
-            <td><%= link_to "Destroy", books_path, method: :delete, class:"btn btn-danger md-3" %></td>
+            <td><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger md-3" %></td>
           </tr>
           <% end %>
         </tbody>

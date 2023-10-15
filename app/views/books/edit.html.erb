@@ -4,10 +4,10 @@
       <h2>Editing Book</h2>
 
       <%= form_with model: @book do |f| %>
-        <p>Title</p>
-        <%= f.text_field :title %>
-        <p>Opinion</p>
-        <%= f.text_area :opinion %><br>
+        <label for="bookTitle">Title</label><br>
+        <%= f.text_field :title, autofocus: true, id:"bookTitle" %><br>
+        <label for="bookOpinion">Opinion</label><br>
+        <%= f.text_area :body, autofocus: true, id:"bookOpinion" %><br>
         <%= f.submit 'Update Book', class:"btn btn-success" %><br>
 
         <%= link_to "Show", book_path(@book.id) %>
