@@ -1,4 +1,16 @@
 <div class="container px-5 px-sm-0">
+
+  <div>
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  </div>
+
   <div class="row">
     <div class="col-md-3">
       <%= render 'users/user_info', user: @user %>
