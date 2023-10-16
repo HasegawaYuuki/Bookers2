@@ -2,7 +2,7 @@
 
   <div>
   <% if @book.errors.any? %>
-    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <h4><%= @book.errors.count %>errors prohibited this obj from being saved:</h4>
     <ul>
       <% @book.errors.full_messages.each do |message| %>
         <li><%= message %></li>

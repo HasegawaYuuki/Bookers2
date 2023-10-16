@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @books = Book.all
+    @books = current_user.books.all
     @book = Book.new
     @user = current_user
   end
@@ -16,12 +16,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(user.id)
+      redirect_to user_path(@user.id)
     else
-      @user = User.find(params[:id])
       render :edit
     end
   end
@@ -32,4 +31,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
+
 end
