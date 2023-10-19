@@ -28,13 +28,16 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.find(params[:id])
     @user = @books.user
+    @book_comment = BookComment.new
   end
 
   def edit
+    is_matching_login_user
     @book = Book.find(params[:id])
   end
 
   def update
+    is_matching_login_user
     @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."

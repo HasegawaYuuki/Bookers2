@@ -1,0 +1,30 @@
+<div>
+
+    <table class="table table-hover">
+      <tbody>
+        <% books.book_comments.each do |book_comment| %>
+        <tr>
+          <td>
+            <%= link_to user_path(books.user.id) do %>
+              <%= image_tag book_comment.user.get_profile_image(50, 50) %><br>
+              <%= book_comment.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= book_comment.comment %>
+          </td>
+          <td>
+            <%= link_to "Destroy", book_book_comments_path(@books[:id]), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger md-3" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<div>
+  <%= form_with model: [books, book_comment] do |f| %>
+    <%= f.text_area :comment, rows:'5', class: 'form-control book_body' %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
