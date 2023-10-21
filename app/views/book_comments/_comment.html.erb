@@ -5,7 +5,7 @@
         <% books.book_comments.each do |book_comment| %>
         <tr>
           <td>
-            <%= link_to user_path(books.user.id) do %>
+            <%= link_to user_path(book_comment.user.id) do %>
               <%= image_tag book_comment.user.get_profile_image(50, 50) %><br>
               <%= book_comment.user.name %>
             <% end %>
@@ -14,7 +14,9 @@
             <%= book_comment.comment %>
           </td>
           <td>
-            <%= link_to "Destroy", book_book_comments_path(@books[:id]), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger md-3" %>
+            <% if book_comment.user == current_user %>
+              <%= link_to "Destroy", book_book_comment_path(book_comment.book.id, book_comment.id), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger md-3" %>
+            <% end %>
           </td>
         </tr>
         <% end %>
@@ -28,3 +30,6 @@
     <%= f.submit "送信" %>
   <% end %>
 </div>
+
+
+
