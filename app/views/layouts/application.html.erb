@@ -18,6 +18,11 @@
     <% flash.each do |message_type, message| %>
       <%= content_tag :div, message, class: message_type %>
     <% end %>
+
+    <div class="d-flex justify-content-center mt-3 mb-2">
+      <%= render "searches/search_form" %>
+    </div>
+
     <%= yield %>
   </main>
 
