@@ -20,7 +20,11 @@
 
 
     <div class="col-md-8 offset-md-1">
+      <div class="mt-3 mb-2">
+        <%= render "searches/search_form" %>
+      </div>
       <h2 class="mt-3">Books</h2>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -46,17 +50,9 @@
               <% end %>
             </td>
             <td><%= book.body %></td>
-            <td>
-              <% if book.favorited_by?(current_user) %>
-                <%= link_to book_favorites_path(book), method: :delete do %>
-                  <i class="fa-solid fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to book_favorites_path(book), method: :post do %>
-                  <i class="fa-regular fa-heart"></i>
-                <% end %>
-              <% end %>
-              <%= book.favorites.count %>
+            <!--いいね機能ajax-partial-->
+            <td id="favorite_buttons_<%= book.id %>">
+              <%= render "favorites/favorites", book: book %>
             </td>
             <td>
              コメント数：<%= book.book_comments.count %>

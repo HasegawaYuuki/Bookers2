@@ -5,10 +5,12 @@
       <p>In <i class="fa-solid fa-book"></i><strong>Bookers</strong>,</p>
       <p>you can share and exchange your opinions , inpressions , and emotions</p>
       <p>about various books!</p>
-      <div class="row">
-        <div class="col-10 mx-auto">
-          <%= link_to "Log in", new_user_session_path, class:"btn btn-block btn-info mb-3" %>
-          <%= link_to "Sign up", new_user_registration_path, class:"btn btn-block btn-success mb-3" %>
+      <div class="col-10 mx-auto">
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class:"btn btn-block btn-info btn-sm mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, class:"btn btn-block btn-success btn-sm " %>
         </div>
       </div>
     </div>

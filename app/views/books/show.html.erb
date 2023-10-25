@@ -36,17 +36,8 @@
               <% end %>
             </td>
             <td><%= @books.body %></td>
-            <td>
-              <% if @books.favorited_by?(current_user) %>
-                <%= link_to book_favorites_path(@books), method: :delete do %>
-                  <i class="fa-solid fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to book_favorites_path(@books), method: :post do %>
-                  <i class="fa-regular fa-heart"></i>
-                <% end %>
-              <% end %>
-              <%= @books.favorites.count %>
+            <td id="favorite_buttons_<%= @books.id %>">
+              <%= render "favorites/favorites", book: @books %>
             </td>
             <td>
               コメント数：<%= @books.book_comments.count %>
