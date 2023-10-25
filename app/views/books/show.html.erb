@@ -39,7 +39,7 @@
             <td id="favorite_buttons_<%= @books.id %>">
               <%= render "favorites/favorites", book: @books %>
             </td>
-            <td>
+            <td id="comment_counter">
               コメント数：<%= @books.book_comments.count %>
             </td>
             <% if @books.user == current_user %>
@@ -49,7 +49,11 @@
           </tr>
         </tbody>
       </table>
-      <%= render 'book_comments/comment', books: @books, book_comment: @book_comment %>
+
+      <div id="comment">
+        <%= render"book_comments/comment", book: @books %>
+      </div>
+      <%= render 'book_comments/commentform', book: @books, book_comment: @book_comment %>
     </div>
   </div>
 </div>
