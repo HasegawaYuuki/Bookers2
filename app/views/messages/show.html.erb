@@ -2,21 +2,15 @@
   <%= @user.name %> さんとのチャット
 </h1>
 
-<div class="message" style="width: 400px;">
-  <% @messages.each do |message| %>
-    <% if message.user_id == current_user.id %>
-      <p style="text-align: right;"><%= message.content %></p>
-    <% else %>
-      <p style="text-align: left;"><%= message.content %></p>
-    <% end %>
-  <% end %>
+<div id="message" class="message" style="width: 400px;">
+  <%= render "messages/index", messages: @messages %>
 </div>
 
 <div class="errors">
-  <%= render "messages/errors", obj: @message %>-->
+  <%= render "messages/errors", obj: @message %>
 </div>
 
-<%= form_with model: @message, data: {remote: true} do |f| %>
+<%= form_with model: @message, local: false do |f| %>
   <%= f.text_field :content %>
   <%= f.hidden_field :room_id %>
 <% end %>

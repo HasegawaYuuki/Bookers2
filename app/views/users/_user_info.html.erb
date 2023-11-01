@@ -42,7 +42,7 @@
   </div>
   <div class="col-6">
     <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-      <%= link_to 'chatを始める', message_path(user.id) %>
+      <%= link_to 'chatを始める', message_path(user.id), class:"btn btn-block btn-info" %>
     <% end %>
   </div>
 </div>
