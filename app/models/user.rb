@@ -16,9 +16,13 @@ class User < ApplicationRecord
   has_many :following_users, through: :followers, source: :followed
   has_many :follower_users, through: :followeds, source: :follower
   
+  #DM機能
   has_many :entries
   has_many :messages
   has_many :rooms, through: :entries
+  
+  #閲覧数カウント
+  has_many :read_counts, dependent: :destroy
 
   has_one_attached :profile_image
 
