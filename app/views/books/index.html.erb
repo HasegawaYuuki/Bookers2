@@ -69,7 +69,11 @@
               <% end %>
             </td>
             <td><%= book.body %></td>
-            <td><%= book.tag %></td>
+            <td>
+              <%= link_to search_path(content: book.tag) do %>
+                <%= book.tag %>
+              <% end %>
+            </td>
             <!--いいね機能ajax-partial-->
             <td id="favorite_buttons_<%= book.id %>">
               <%= render "favorites/favorites", book: book %>
