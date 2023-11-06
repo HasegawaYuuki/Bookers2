@@ -4,12 +4,14 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   has_many :book_comments, dependent: :destroy
-  
+
   has_many :read_counts, dependent: :destroy
-  
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}
+  scope :most_favorited, -> (from, to){includes(:favorited_users)
+    .sort_by { |x| x.favorited_users.includes(:favorites).where(created_at: from...to).size }.reverse}
 
   validates :title, presence: true
   validates :body, presence: true,
@@ -21,13 +23,13 @@ class Book < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Book.where(title: content)
+      Book.where('title LIKE ? OR tag LIKE ?', content, content)
     elsif method == 'forward'
       Book.where('title LIKE ?', content + '%')
     elsif method == 'backward'
       Book.where('title LIKE ?', '%' + content)
     else
-      Book.where('title LIKE ?', '%' + content + '%')
+      Book.where('title LIKE ? OR tag LIKE ?', '%' + content + '%', '%' + content + '%')
     end
   end
 

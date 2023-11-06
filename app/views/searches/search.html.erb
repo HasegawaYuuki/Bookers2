@@ -21,6 +21,41 @@
             </tr>
           <% end %>
         </tbody>
+      <% elsif @modl == "book" %>
+        <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th>Tag</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <h2>Books search for "<%= @content %>"</h2>
+          <% @records.each do |book| %>
+            <tr>
+              <td>
+                <%= link_to user_path(book.user) do %>
+                  <%= image_tag book.user.get_profile_image(50, 50) %>
+                  <%= book.user.name %>
+                <% end %>
+              </td>
+              <td><%= link_to book.title , book_path(book.id) %></td>
+              <td><%= book.body %></td>
+              <td><%= book.tag %></td>
+              <td id="favorite_buttons_<%= book.id %>">
+                <%= render "favorites/favorites", book: book %>
+              </td>
+              <td>コメント数：<%= book.book_comments.count %></td>
+              <td>閲覧数：<%= book.read_counts.count %></td>
+              <td><%= render "books/static.rate", book: book %></td>
+            </tr>
+          <% end %>
+        </tbody>
       <% else %>
         <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
         <thead>
@@ -28,22 +63,33 @@
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
-
+            <th>Tag</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
+        </thead>
         <tbody>
-            <h2>Books search for "<%= @content %>"</h2>
-            <% @records.each do |book| %>
-              <tr>
-                <td>
-                  <%= link_to user_path(book.user) do %>
-                    <%= image_tag book.user.get_profile_image(50, 50) %>
-                    <%= book.user.name %>
-                  <% end %>
-                </td>
-                <td><%= link_to book.title , book_path(book.id) %></td>
-                <td><%= book.body %></td>
-                </tr>
-              <% end %>
+          <h2>Books search for "<%= @content %>"</h2>
+          <% @records.each do |book| %>
+            <tr>
+              <td>
+                <%= link_to user_path(book.user) do %>
+                  <%= image_tag book.user.get_profile_image(50, 50) %>
+                  <%= book.user.name %>
+                <% end %>
+              </td>
+              <td><%= link_to book.title , book_path(book.id) %></td>
+              <td><%= book.body %></td>
+              <td><%= book.tag %></td>
+              <td id="favorite_buttons_<%= book.id %>">
+                <%= render "favorites/favorites", book: book %>
+              </td>
+              <td>コメント数：<%= book.book_comments.count %></td>
+              <td>閲覧数：<%= book.read_counts.count %></td>
+              <td><%= render "books/static.rate", book: book %></td>
+            </tr>
+          <% end %>
         </tbody>
       <% end %>
     </table>

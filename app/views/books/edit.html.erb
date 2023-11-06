@@ -19,6 +19,8 @@
         <%= f.text_field :title, autofocus: true, id:"bookTitle", class: 'form-control book_title' %><br>
         <label for="bookOpinion">Opinion</label><br>
         <%= f.text_area :body, autofocus: true, id:"bookOpinion", class: 'form-control book_body' %><br>
+        <label for="bookTag">Tag</label><br>
+        <%= f.text_field :tag, autofocus: true, id:"bookTag", class: 'form-control book_tag' %><br>
         <%= render "books/static.rate", book: @book %><br>
         <%= f.submit 'Update Book', class:"btn btn-success" %><br>
 

@@ -4,7 +4,9 @@
     <%= f.text_field :title, class: 'form-control book_title' %>
     <p>Opinion</p>
     <%= f.text_area :body, class: 'form-control book_body' %><br>
-    
+    <p>Tag</p>
+      <%= f.text_field :tag, class: 'form-control book_tag' %><br>
+
     <% if book.id.nil? %>
     <div class="form-group" id="star">
       <%= f.label :star %>
@@ -15,9 +17,9 @@
       $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
-  
+
         elem.innerHTML = ""
-        let opt = {  
+        let opt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
