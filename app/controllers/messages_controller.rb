@@ -24,6 +24,11 @@ class MessagesController < ApplicationController
     @messages = @message.room.messages
   end
 
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+  end
+
   private
   def message_params
     params.require(:message).permit(:content, :room_id)

@@ -1,7 +1,36 @@
-<% messages.each do |message| %>
+
   <% if message.user_id == current_user.id %>
-    <p style="text-align: right;"><%= message.content %></p>
+    <div class="row mb-1 justify-content-end" id="messages_<%= message.id %>">
+      <div class="col-auto">
+        <%= link_to message, method: :delete, remote: true, data: {confirm: "Delete"}, class: "text-decoration-none text-white" do %>
+          <div class="card bg-info text-white" style="height: 30px;">
+            <div class="d-flex align-items-center h-100">
+              <div class="card-body text-center">
+                <%= message.content %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-auto">
+        <%= image_tag message.user.get_profile_image(50,50) %>
+        <%= message.created_at.strftime('%H:%M') %>
+      </div>
+    </div>
   <% else %>
-    <p style="text-align: left;"><%= message.content %></p>
+    <div class="row mb-1">
+      <div class="col-auto">
+        <%= message.created_at.strftime('%H:%M') %>
+        <%= image_tag message.user.get_profile_image(50,50) %>
+      </div>
+      <div class="col-auto">
+        <div class="card bg-secondary text-white" style="height: 30px;">
+          <div class="d-flex align-items-center h-100">
+            <div class="card-body text-center">
+              <%= message.content %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-<% end %>

@@ -1,5 +1,4 @@
-<% if message.user_id == current_user.id %>
-  <p style="text-align: right;"><%= message.content %></p>
-<% else %>
-  <p style="text-align: left;"><%= message.content %></p>
+<%= form_with model: message, local: false do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :room_id %>
 <% end %>

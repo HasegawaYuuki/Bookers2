@@ -79,10 +79,10 @@
               <%= render "favorites/favorites", book: book %>
             </td>
             <td>
-             コメント数：<%= book.book_comments.count %>
+              <i class="fa-regular fa-comment"></i><%= book.book_comments.count %>
             </td>
             <td>
-              閲覧数：<%= book.read_counts.count %>
+              <i class="fa-regular fa-eye"></i><%= book.read_counts.count %>
             </td>
             <td>
               <%= render "books/static.rate", book: book %>

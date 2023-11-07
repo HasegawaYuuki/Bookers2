@@ -1,7 +1,7 @@
 <h2 class="mt-3">New book</h2>
 <%= form_with model: book do |f| %>
     <p>Title</p>
-    <%= f.text_field :title, class: 'form-control book_title' %>
+    <%= f.text_field :title, class: 'form-control book_title' %><br>
     <p>Opinion</p>
     <%= f.text_area :body, class: 'form-control book_body' %><br>
     <p>Tag</p>
