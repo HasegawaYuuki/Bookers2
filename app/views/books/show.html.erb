@@ -50,7 +50,7 @@
             </td>
             <% if @books.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@books.id), class:"btn btn-success md-3" %></td>
-            <td><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger md-3" %></td>
+            <td><%= link_to "Destroy", book_path, method: :delete, _ %></td>
             <% end %>
           </tr>
         </tbody>

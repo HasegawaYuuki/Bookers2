@@ -29,17 +29,6 @@
                 <li style="list-style:none;"><%= user.name %></li>
               <% end %>
             </td>
-            <td>
-              <% if @group.owner_id == current_user.id %>
-                <%= link_to "Edit", edit_group_path(@group), class: "btn btn-success" %>
-              <% else %>
-                <% if @group.include_user?(current_user) %>
-                  <%= link_to "グループout", group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
-                <% else %>
-                  <%= link_to "グループin", group_group_users_path(@group), method: :post, class: "btn btn-success" %>
-                <% end %>
-              <% end %>
-            </td>
           </tr>
         </tbody>
       </table>
