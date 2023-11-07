@@ -9,9 +9,9 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
-    comment = BookComment.find(params[:id])
-    @book = comment.book
-    comment.destroy
+    @comment = BookComment.find(params[:id])
+    @book = Book.find(params[:book_id])
+    @comment.destroy
     #redirect_back(fallback_location: books_path)
   end
 

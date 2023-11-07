@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :group_users, dependent: :destroy
 
   # フォローをした、されたの関係
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -15,12 +16,12 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :following_users, through: :followers, source: :followed
   has_many :follower_users, through: :followeds, source: :follower
-  
+
   #DM機能
   has_many :entries
   has_many :messages
   has_many :rooms, through: :entries
-  
+
   #閲覧数カウント
   has_many :read_counts, dependent: :destroy
 
