@@ -7,10 +7,13 @@
       <p>about various books!</p>
       <div class="col-10 mx-auto">
         <div class="row">
-          <%= link_to "Log in", new_user_session_path, class:"btn btn-block btn-info btn-sm mb-3" %>
+          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-block btn-secondary btn-sm mb-3 sign_in", method: :post %>
         </div>
         <div class="row">
-          <%= link_to "Sign up", new_user_registration_path, class:"btn btn-block btn-success btn-sm " %>
+          <%= link_to "ログイン", new_user_session_path, class:"btn btn-block btn-info btn-sm mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-block btn-success btn-sm " %>
         </div>
       </div>
     </div>
